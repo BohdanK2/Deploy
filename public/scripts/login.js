@@ -17,10 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const data = await response.json();
 
-        if (response.ok) {
-          alert("Вхід успішний!");
-          localStorage.setItem("token", data.token);
-          window.location.href = "account.html";
+       if (response.ok) {
+  alert("Вхід успішний!");
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("nextview_user", JSON.stringify(data.user)); // <--- ДОБАВЬ ЭТУ СТРОКУ!
+  window.location.href = "account.html";
         } else {
           alert("Помилка: " + data.message);
         }
