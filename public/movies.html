@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movies - NextView</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body class="page-wrapper">
+
+  <!-- Header -->
+  <header class="header" >
+    <div class="logo">
+        <img src="img/logo.jpg" alt="NextView Logo" />
+      </div>
+      
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="movies.html" class="active">Movies</a>
+        <a href="series.html">Series</a>
+        <!-- <a href="favourites.html">Favourites</a> -->
+        <a href="about.html">About</a>
+      </nav>
+      <div class="auth-buttons">
+      <a href="#" onclick="openPopup('signup-popup')" class="btn border">Sign Up</a>
+      <a href="#" onclick="openPopup('login-popup')" class="btn light">Login</a>  
+    </div>
+  </header>
+<!-- POPUP OVERLAY -->
+  <div id="popup-overlay" class="popup-overlay hidden"></div>
+
+  <!-- SIGNUP POPUP -->
+  <div id="signup-popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-popup" onclick="closePopup('signup-popup')">×</span>
+      <h2>
+        <div class="logo"><img src="img/logo.jpg" alt="NextView Logo" /></div>
+        <div class="login-text-top"></divclass>Create your account</div>
+      </h2>
+      <form id="signup-form">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit" class="btn green-l">Sign Up</button>
+      </form>
+      <p class="switch-link">Already have an account? <a href="#" onclick="switchPopup('signup-popup','login-popup')">Login</a></p>
+      <div id="signup-message" class="message"></div>
+    </div>
+  </div>
+  <!-- LOGIN POPUP -->
+  <div id="login-popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-popup" onclick="closePopup('login-popup')">×</span>
+      <h2>
+        <div class="logo"><img src="img/logo.jpg" alt="NextView Logo" /></div>
+        <div class="login-text-top"> Login to your account</div>
+      </h2>
+      <form id="login-form">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+
+        <button type="submit" class="btn green-l">Log in</button>
+      </form>
+      <p class="switch-link">Don't have an account? <a href="#" onclick="switchPopup('login-popup','signup-popup')">Sign Up</a></p>
+      <div id="login-message" class="message"></div>
+    </div>
+  </div>
+  <!-- Hero Banner -->
+  <section class="hero" style="background-image: url('img/movies_banner.jpg')">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Havoc</h1>
+      <p>2024 • Action • 1h 58min</p>
+    <div class="hero-buttons">
+  <div class="left-buttons">
+    <button class="btn green">Watch Trailer</button>
+    <button class="btn">Add to Watchlist</button>
+  </div>
+  <div class="right-buttons">
+    <button class="btn">Download</button>
+    <button class="btn">Share</button>
+  </div>
+</div>
+  </section>
+
+ <!-- Section: Just Released -->
+<section class="section">
+  <h2>Just Released</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/release1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Minecraft</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Sinners</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">4.2</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Nonnas</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">4.9</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Final Destination Bloodlines</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">3.8</span>
+        <span class="meta">| Sci-Fi • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Until Dawn</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">4.0</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Trending Now -->
+<section class="section dark">
+  <h2>Trending Now</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/trend1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Oppenheimer</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.8</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>VHS 94</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Smile 2</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Animation • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Heart Eyes</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.4</span>
+        <span class="meta">| Sci-Fi • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Cabin</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Must Watch -->
+<section class="section">
+  <h2>Must Watch</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/must1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Karate Kid</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.9</span>
+        <span class="meta">| Action • Movie</span>
+      </div></div>
+    <div class="card">
+      <img src="img/must2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Jocker</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.8</span>
+        <span class="meta">| Drama • Movie</span>
+      </div></div>
+    <div class="card">
+      <img src="img/must3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Venom: Last Dance</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.1</span>
+        <span class="meta">| Musical • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/must4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Deadpool</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/must5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Man in Black II</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Action -->
+<section class="section">
+  <h2>Action</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/action1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Avatar: The way of water</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Batman</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Kill Bill</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Mission Impossible</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.4</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Mortal Kombat</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Adventure -->
+<section class="section">
+  <h2>Adventure</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/adventure1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Hobbit the Desolation of Smaug</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.1</span>
+        <span class="meta">| Adventure • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/adventure2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Power of the Dog</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.0</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/adventure3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Last of US</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Adventure • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/adventure4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Rambo</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.9</span>
+        <span class="meta">| Sci-Fi • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/adventure5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>1899</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+      </div>
+  </div>
+</section>
+
+<!-- Section: Horror -->
+<section class="section">
+  <h2>Horror</h2>
+  <div class="grid">
+    <div class="card"><img src="img/horror1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>SAW III</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.1</span>
+        <span class="meta">| Horror • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Monkey</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Nun II</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">3.8</span>
+        <span class="meta">| Horror • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>IT</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Horror • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Screeam Therapy</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Comedy -->
+<section class="section">
+  <h2>Comedy</h2>
+  <div class="grid">
+    <div class="card"><img src="img/comedy1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>American Pie</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Zohan</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Scary Movie</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.4</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Guardians of the Galaxy 2</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.0</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Birds of Prey</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Drama -->
+<section class="section">
+  <h2>Drama</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/drama1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Titanic</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.8</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/drama2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The most powerful man in the world</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/drama3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Flight Risk</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/drama4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Amateur</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Biography • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/drama5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Blue Ruin</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Footer -->
+<footer class="custom-footer">
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>Our platform is trusted by millions &<br>features best updated movies all<br>around the world.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Term of service</a>
+          <!-- <a href="#">Language</a> -->
+        </div>
+      </div>
+      <div class="footer-nav-social">
+        <!-- <nav class="footer-nav">
+          <a href="index.html">Home</a> /
+          <a href="#">Discover</a> /
+          <a href="#">Influence</a> /
+          <a href="#">Release</a>
+        </nav> -->
+        <div class="footer-social">
+          <a href="#"><img src="img/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="img/google.png" alt="Google" /></a>
+        </div>
+        <p class="footer-copy">© 2025</p>
+      </div>
+    </div>
+  </footer>
+  
+
+  <!-- Popups -->
+  <script src="scripts/popup.js"></script>
+  <script src="scripts/login.js"></script>
+  <script src="scripts/signup.js"></script>
+  <script src="scripts/coursor.js"></script>
+  <script>
+  function openMoviePageEmpty(title, img, description) {
+    const movieData = { title, img, description };
+    localStorage.setItem("nextview_selectedMovie", JSON.stringify(movieData));
+    window.location.href = "movie-open-empty.html";
+  }
+  </script>
+  <a href="support.html" class="support-bubble">Need any help❓</a>
+</body>
+</html>

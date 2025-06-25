@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - NextView</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body display flex 100 wh colonca  space bvetween> 
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+        <img src="img/logo.jpg" alt="NextView Logo" />
+      </div>
+      
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="movies.html">Movies</a>
+      <a href="series.html">Series</a>
+      <!-- <a href="favourites.html">Favourites</a> -->
+      <a href="about.html" class="active">About</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="#" onclick="openPopup('signup-popup')" class="btn border">Sign Up</a>
+      <a href="#" onclick="openPopup('login-popup')" class="btn light">Login</a>  
+    </div>
+  </header>
+<!-- POPUP OVERLAY -->
+  <div id="popup-overlay" class="popup-overlay hidden"></div>
+
+  <!-- SIGNUP POPUP -->
+  <div id="signup-popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-popup" onclick="closePopup('signup-popup')">×</span>
+      <h2>
+        <div class="logo"><img src="img/logo.jpg" alt="NextView Logo" /></div>
+        <div class="login-text-top"></divclass>Create your account</div>
+      </h2>
+      <form id="signup-form">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit" class="btn green-l">Sign Up</button>
+      </form>
+      <p class="switch-link">Already have an account? <a href="#" onclick="switchPopup('signup-popup','login-popup')">Login</a></p>
+      <div id="signup-message" class="message"></div>
+    </div>
+  </div>
+  <!-- LOGIN POPUP -->
+  <div id="login-popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close-popup" onclick="closePopup('login-popup')">×</span>
+      <h2>
+        <div class="logo"><img src="img/logo.jpg" alt="NextView Logo" /></div>
+        <div class="login-text-top"> Login to your account</div>
+      </h2>
+      <form id="login-form">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+
+        <button type="submit" class="btn green-l">Log in</button>
+      </form>
+      <p class="switch-link">Don't have an account? <a href="#" onclick="switchPopup('login-popup','signup-popup')">Sign Up</a></p>
+      <div id="login-message" class="message"></div>
+    </div>
+  </div>
+  <!-- About Section -->
+  <main class="main">
+  <section class="section" style="margin-top: 100px; max-width: 800px; margin-left: auto; margin-right: auto;">
+ <h2>About NextView</h2>
+    <p>
+      Welcome to NextView — your personal gateway to the world of movies and series.
+    </p>
+    <p>
+      At NextView, we believe that discovering great entertainment should be simple, sleek, and enjoyable. 
+      Our platform brings together a curated selection of movies and shows across different genres, 
+      all wrapped in a user-friendly experience that puts you in control.
+    </p>
+    
+  </section>
+</main>
+
+
+<main class="main">
+    <section class="section" style="margin-top: 100px; max-width: 800px; margin-left: auto; margin-right: auto;">
+ <h2>What We Offer</h2>
+<p>Discover New Titles</p>
+    <p class="easter-egg">
+      Explore trending films, must-watch classics, and fresh releases in one place.
+    </p>
+    <p>Personal Favorites</p>
+    <p class="easter-egg">
+     Easily add movies you love to your favorites and revisit them anytime.
+    </p>
+<p> Smart Search</p>
+    <p class="easter-egg">
+     Explore trending films, must-watch classics, and fresh releases in one place.
+    </p>
+<p>Intuitive Design</p>
+    <p class="easter-egg">
+     Find what you’re looking for with a clean and fast search experience.
+    </p>
+<p></p>
+    
+
+    </section>
+  </main>
+
+  
+ 
+
+<!-- Footer -->
+
+ <footer class="custom-footer"> 
+    <div style="flex: 1;" class="footer-content">
+      <div class="footer-text">
+        <p>Our platform is trusted by millions &<br>features best updated movies all<br>around the world.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Term of service</a>
+          <!-- <a href="#">Language</a> -->
+        </div>
+      </div>
+      <div class="footer-nav-social">
+        <!-- <nav class="footer-nav">
+          <a href="index.html">Home</a> /
+          <a href="#">Discover</a> /
+          <a href="#">Influence</a> /
+          <a href="#">Release</a>
+        </nav> -->
+        <div class="footer-social">
+          <a href="#"><img src="img/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="img/google.png" alt="Google" /></a>
+        </div>
+        <p class="footer-copy">© 2025</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Floating Help Bubble -->
+  <a href="support.html" class="support-bubble">Need any help❓</a>
+<script src="scripts/coursor.js"></script>
+  <script src="scripts/popup.js"></script>
+  <script src="scripts/login.js"></script>
+  <script src="scripts/signup.js"></script>
+</body>
+</html>

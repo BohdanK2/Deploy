@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Page - NextView</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body onload="loadMovie()">
+
+  <!-- Header -->
+  <!-- <header class="header">
+    <div class="logo">
+        <img src="img/logo.jpg" alt="NextView Logo" />
+      </div>
+      
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="movies.html">Movies</a>
+      <a href="series.html">Series</a>
+      <a href="favourites.html">Favourites</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header> -->
+
+  <!-- Movie Content -->
+  <!-- <section class="section" style="margin-top: 100px;"> -->
+    <div class="movie-open">
+      <!-- <h1 id="movie-title">Movie Title</h1>
+      <img id="movie-img" src="" alt="Movie Poster" style="max-width: 300px; border-radius: 10px;">
+      <p id="movie-description" style="max-width: 600px; margin: 20px 0;"></p> -->
+
+      <video class="full-video" playsinline controls>
+        <source src="https://palmerpage.com/jonas/jaws.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- <div class="hero-buttons" style="margin-top: 20px;">
+        <button class="btn green">Watch</button>
+        <button class="btn" onclick="addToFavourites()">🖤 Add to Favourites</button>
+        <button class="btn">Download</button>
+        <button class="btn">Share</button>
+      </div> -->
+    </div>
+  <!-- </section> -->
+<!-- Footer -->
+<!-- <footer class="custom-footer">
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>Our platform is trusted by millions &<br>features best updated movies all<br>around the world.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Term of service</a>
+          <a href="#">Language</a>
+        </div>
+      </div>
+      <div class="footer-nav-social">
+        <nav class="footer-nav">
+          <a href="index.html">Home</a> /
+          <a href="#">Discover</a> /
+          <a href="#">Influence</a> /
+          <a href="#">Release</a>
+        </nav>
+        <div class="footer-social">
+          <a href="#"><img src="img/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="img/google.png" alt="Google" /></a>
+        </div>
+        <p class="footer-copy">© 2025</p>
+      </div>
+    </div>
+  </footer> -->
+  
+  <script>
+    function loadMovie() {
+      const data = JSON.parse(localStorage.getItem("nextview_selectedMovie"));
+      if (data) {
+        document.getElementById("movie-title").textContent = data.title;
+        document.getElementById("movie-img").src = data.img;
+        document.getElementById("movie-img").alt = data.title;
+        document.getElementById("movie-description").textContent = data.description || "No description available.";
+      }
+    }
+
+    function addToFavourites() {
+      const data = JSON.parse(localStorage.getItem("nextview_selectedMovie"));
+      const current = JSON.parse(localStorage.getItem("nextview_favourites")) || [];
+      const exists = current.find(f => f.title === data.title);
+      if (!exists) {
+        current.push(data);
+        localStorage.setItem("nextview_favourites", JSON.stringify(current));
+        alert("Added to favourites!");
+      } else {
+        alert("Already in favourites.");
+      }
+    }
+    
+  </script>
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<script>
+  const player = new Plyr('#custom-video', {
+    fullscreen: { enabled: true }, 
+    controls: [
+      'play', 'progress', 'current-time', 'mute', 'volume', 'settings'
+    ],
+    theme: {
+      primary: '#10b981' 
+    }
+  });
+</script>
+<script src="scripts/coursor.js"></script>
+<script src="scripts/movie.js"></script>
+</body>
+</html>

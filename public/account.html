@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Settings – NextView</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <div class="account-settings-container">
+    <div class="account-header">
+      <img src="img/avatar.jpg" alt="User Avatar" />
+      <div>
+        <h2 id="username">Igor</h2>
+        <p id="email">lokikom3@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="account-actions">
+      <h3>Change Password</h3>
+      <input type="password" placeholder="Current password" />
+      <input type="password" placeholder="New password" />
+      <input type="password" placeholder="Confirm new password" />
+      <button class="btn green">Update Password</button>
+    </div>
+
+    <div class="account-actions">
+      <h3>Subscription</h3>
+      <p>Status: <strong>Active</strong></p>
+      <p>Plan: <strong>Premium</strong></p>
+      <a href="subscription.html" class="btn">Manage Subscription</a>
+    </div>
+
+    <div class="account-actions">
+      <h3>Delete Account</h3>
+      <button class="btn danger">Delete my account</button>
+    </div>
+
+    <div class="logout-link">
+      <a href="#" id="logout" onclick="logout()">Logout</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="custom-footer">
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>Our platform is trusted by millions &<br>features best updated movies all<br>around the world.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Term of service</a>
+          <!-- <a href="#">Language</a> -->
+        </div>
+      </div>
+      <div class="footer-nav-social">
+        <!-- <nav class="footer-nav">
+          <a href="index.html">Home</a> /
+          <a href="#">Discover</a> /
+          <a href="#">Influence</a> /
+          <a href="#">Release</a>
+        </nav> -->
+        <div class="footer-social">
+          <a href="#"><img src="img/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="img/google.png" alt="Google" /></a>
+        </div>
+        <p class="footer-copy">© 2025</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="support.html" class="support-bubble">Need any help❓</a>
+
+  <script src="scripts/coursor.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("nextview_user"));
+    if (!user) {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("username").textContent = user.username;
+      document.getElementById("email").textContent = user.email;
+    }
+
+    document.getElementById("logout").addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.removeItem("nextview_user");
+      window.location.href = "index.html";
+    });
+  </script>
+  <script>
+  function toggleDropdown() {
+    document.getElementById('dropdown').classList.toggle('hidden');
+  }
+
+  function logout() {
+    localStorage.removeItem("nextview_user");
+    window.location.href = "index.html";
+  }
+</script>
+</body>
+</html>
