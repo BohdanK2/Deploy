@@ -5,17 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Account Settings – NextView</title>
   <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    .avatar-preview { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid #ccc; }
+    #avatar-form { margin-top: 10px; }
+  </style>
 </head>
 <body>
-
   <div class="account-settings-container">
     <div class="account-header">
-      <img src="img/avatar.jpg" alt="User Avatar" />
+      <!-- Профильная аватарка -->
+      <img id="profile-avatar" class="avatar-preview" src="img/avatar.jpg" alt="User Avatar" />
       <div>
-        <h2 id="username">Igor</h2>
-        <p id="email">lokikom3@gmail.com</p>
+        <h2 id="username">Имя</h2>
+        <p id="email">E-mail</p>
       </div>
     </div>
+
+    <!-- Форма для выбора/загрузки нового аватара -->
+    <form id="avatar-form" enctype="multipart/form-data">
+      <input type="file" name="avatar" id="avatar" accept="image/*" />
+      <button type="submit" class="btn">Загрузить аватарку</button>
+    </form>
 
     <div class="account-actions">
       <h3>Change Password</h3>
@@ -50,16 +60,9 @@
         <div class="footer-links">
           <a href="privacy.html">Privacy policy</a>
           <a href="terms.html">Term of service</a>
-          <!-- <a href="#">Language</a> -->
         </div>
       </div>
       <div class="footer-nav-social">
-        <!-- <nav class="footer-nav">
-          <a href="index.html">Home</a> /
-          <a href="#">Discover</a> /
-          <a href="#">Influence</a> /
-          <a href="#">Release</a>
-        </nav> -->
         <div class="footer-social">
           <a href="#"><img src="img/instagram.png" alt="Instagram" /></a>
           <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
@@ -74,32 +77,56 @@
 
   <script src="scripts/coursor.js"></script>
   <script>
-const user = JSON.parse(localStorage.getItem("nextview_user"));
-if (!user) {
-  // Если пользователь не залогинен — переход на главную
-  window.location.href = "index.html";
-} else {
-  document.getElementById("username").textContent = user.username;
-  document.getElementById("email").textContent = user.email;
-}
+    // Проверка авторизации и отображение данных пользователя
+    const user = JSON.parse(localStorage.getItem("nextview_user"));
+    if (!user) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("username").textContent = user.username;
+      document.getElementById("email").textContent = user.email;
+      // Показываем аватарку: если нет — дефолт
+      document.getElementById("profile-avatar").src = user.avatar_url || "img/avatar.jpg";
+    }
 
-document.getElementById("logout").addEventListener("click", function (e) {
-  e.preventDefault();
-  localStorage.removeItem("nextview_user");
-  localStorage.removeItem("token");
-  window.location.href = "index.html";
-});
+    // Загрузка аватарки (отправка на backend)
+    document.getElementById("avatar-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const fileInput = document.getElementById("avatar");
+      if (!fileInput.files.length) return alert("Выберите файл!");
 
+      const formData = new FormData();
+      formData.append("avatar", fileInput.files[0]);
+      formData.append("userId", user.id); // Если идентификатор нужен
+
+      // Пример запроса: замени на свой backend-роут!
+      const response = await fetch("/api/avatar", {
+        method: "POST",
+        body: formData
+      });
+      const data = await response.json();
+
+      if (data.avatarUrl) {
+        user.avatar_url = data.avatarUrl;
+        localStorage.setItem("nextview_user", JSON.stringify(user));
+        document.getElementById("profile-avatar").src = user.avatar_url;
+        alert("Аватарка успешно обновлена!");
+      } else {
+        alert(data.message || "Ошибка при загрузке аватарки");
+      }
+    });
+
+    document.getElementById("logout").addEventListener("click", function (e) {
+      e.preventDefault();
+      localStorage.removeItem("nextview_user");
+      localStorage.removeItem("token");
+      window.location.href = "index.html";
+    });
+
+    function logout() {
+      localStorage.removeItem("nextview_user");
+      localStorage.removeItem("token");
+      window.location.href = "index.html";
+    }
   </script>
-  <script>
-  function toggleDropdown() {
-    document.getElementById('dropdown').classList.toggle('hidden');
-  }
-
-  function logout() {
-    localStorage.removeItem("nextview_user");
-    window.location.href = "index.html";
-  }
-</script>
 </body>
 </html>

@@ -11,9 +11,16 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-// Подключаем настоящие роуты авторизации
+// Подключаем роуты авторизации
 const authRoutes = require('./routes/auth.routes');
 app.use('/api', authRoutes);
+
+// Подключаем роут для аватарок
+const avatarRoutes = require('./routes/avatar.routes');
+app.use('/api', avatarRoutes);
+
+// Раздаём public/uploads как статику для аватарок!
+app.use('/uploads', express.static(path.join(__dirname, '../../public/uploads')));
 
 // Публичные файлы (например, index.html)
 app.use(express.static(path.join(__dirname, '../../public')));
