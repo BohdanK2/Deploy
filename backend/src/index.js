@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
+// Принудительно импортируем pool/db.js, чтобы вывести все логи env!
+require('./config/db');
+
 const app = express();
 const PORT = 3000;
 
