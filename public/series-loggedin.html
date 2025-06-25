@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Series - NextView</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body class="page-wrapper">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="img/logo.jpg" alt="NextView Logo" />
+    </div>
+    
+    <nav class="nav">
+      <a href="index-loggedin.html">Home</a>
+      <a href="movies-loggedin.html">Movies</a>
+      <a href="series-loggedin.html"class="active">Series</a>
+      <a href="favourites-loggedin.html">Favourites</a>
+      <a href="about-loggedin.html">About</a>
+    </nav>
+    <input type="text" id="searchInput" placeholder="Search movies..." class="search-input"/>
+    <div class="auth-buttons">
+      <div class="user-panel">
+  <img src="img/avatar.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+  <span class="arrow">▾</span>
+
+  <div id="dropdown" class="dropdown hidden">
+    <a href="account.html">
+  <span class="icon">
+    <img src="img/account-icon.png" alt="Account" class="menu-icon">
+  </span>
+  Account Settings
+</a>
+
+<a href="support-loggedin.html">
+  <span class="icon">
+    <img src="img/support-icon.png" alt="Support" class="menu-icon">
+  </span>
+  Support
+</a>
+    <a href="#" onclick="logout()"><span class="icon"></span> Logout</a>
+  </div>
+</div>
+
+      
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero" style="background-image: url('img/series_banner.jpg')">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>The Terminal List</h1>
+      <p>2023 • Thriller • 8 Episodes</p>
+      <div class="hero-buttons">
+        <button class="btn green">Watch Now</button>
+        <button class="btn" onclick="addToFavourites('The Terminal List', 'img/series_banner.jpg')">🖤 Add to Favourites</button>
+      </div>
+    </div>
+  </section>
+
+ <!-- Section: Just Released -->
+<section class="section">
+  <h2>Just Released</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/release1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Uncharted</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Action • Movie</span>
+        <button class="btn" onclick="addToFavourites('Series 1', 'img/release1.jpg')">🖤 Add to Favourites</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Deep Water</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">4.2</span>
+        <span class="meta">| Thriller • Movie</span>
+        <button class="btn" onclick="addToFavourites('Series 2', 'img/release2.jpg')">🖤 Add to Favourites</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Batman</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">4.9</span>
+        <span class="meta">| Action • Movie</span>
+        <button class="btn" onclick="addToFavourites('Series 3', 'img/release3.jpg')">🖤 Add to Favourites</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Moonfall</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">3.8</span>
+        <span class="meta">| Sci-Fi • Movie</span>
+        <button class="btn" onclick="addToFavourites('Series 4', 'img/release4.jpg')">🖤 Add to Favourites</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/release5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Dog</p>
+      <div class="movie-rating">
+        <span class="star">★</span><span class="score">4.0</span>
+        <span class="meta">| Comedy • Movie</span>
+        <button class="btn" onclick="addToFavourites('Series 5', 'img/release5.jpg')">🖤 Add to Favourites</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Trending Now -->
+<section class="section dark">
+  <h2>Trending Now</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/trend1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Black Panther</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.8</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>No Time To Die</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Encanto</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Animation • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Dune</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.4</span>
+        <span class="meta">| Sci-Fi • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/trend5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>King Richard</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Must Watch -->
+<section class="section">
+  <h2>Must Watch</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/must1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Spider-Man</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.9</span>
+        <span class="meta">| Action • Movie</span>
+      </div></div>
+    <div class="card">
+      <img src="img/must2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>CODA</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.8</span>
+        <span class="meta">| Drama • Movie</span>
+      </div></div>
+    <div class="card">
+      <img src="img/must3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>West Side Story</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.1</span>
+        <span class="meta">| Musical • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/must4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Licorice Pizza</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/must5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Belfast</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Action -->
+<section class="section">
+  <h2>Action</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/action1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Top Gun</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Extraction</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Red Notice</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Gray Man</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.4</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/action5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Bullet Train</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Action • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Adventure -->
+<section class="section">
+  <h2>Adventure</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/adventure1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Jungle Cruise</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.1</span>
+        <span class="meta">| Adventure • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/adventure2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Lost City</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.0</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/adventure3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Indiana Jones</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Adventure • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/adventure4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Avatar</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.9</span>
+        <span class="meta">| Sci-Fi • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/adventure5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Jumanji</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+      </div>
+  </div>
+</section>
+
+<!-- Section: Horror -->
+<section class="section">
+  <h2>Horror</h2>
+  <div class="grid">
+    <div class="card"><img src="img/horror1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Scream</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.1</span>
+        <span class="meta">| Horror • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Smile</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Nun</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">3.8</span>
+        <span class="meta">| Horror • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>IT</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Horror • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/horror5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Conjuring</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Thriller • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Comedy -->
+<section class="section">
+  <h2>Comedy</h2>
+  <div class="grid">
+    <div class="card"><img src="img/comedy1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Hangover</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Superbad</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Step Brothers</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.4</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Dumb & Dumber</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.0</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+    <div class="card"><img src="img/comedy5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Rush Hour</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.3</span>
+        <span class="meta">| Comedy • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: Drama -->
+<section class="section">
+  <h2>Drama</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="img/drama1.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Father</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.8</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/drama2.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Nomadland</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.6</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/drama3.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>The Trial</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.5</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+      </div>
+    <div class="card">
+      <img src="img/drama4.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Mank</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.2</span>
+        <span class="meta">| Biography • Movie</span>
+      </div>
+    </div>
+    <div class="card">
+      <img src="img/drama5.jpg" alt=""onclick="openMoviePageEmpty()">
+      <p>Marriage Story</p>
+      <div class="movie-rating">
+        <span class="star">★</span>
+        <span class="score">4.7</span>
+        <span class="meta">| Drama • Movie</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="custom-footer">
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>Our platform is trusted by millions &<br>features best updated movies all<br>around the world.</p>
+        <div class="footer-links">
+          <a href="privacy-loggedin.html">Privacy policy</a>
+          <a href="terms-loggedin.html">Term of service</a>
+          <!-- <a href="#">Language</a> -->
+        </div>
+      </div>
+      <div class="footer-nav-social">
+        <!-- <nav class="footer-nav">
+          <a href="index-loggedin.html">Home</a> /
+          <a href="#">Discover</a> /
+          <a href="#">Influence</a> /
+          <a href="#">Release</a>
+        </nav> -->
+        <div class="footer-social">
+          <a href="#"><img src="img/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="img/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="img/google.png" alt="Google" /></a>
+        </div>
+        <p class="footer-copy">© 2025</p>
+      </div>
+    </div>
+  </footer>
+  
+
+  <!-- Scripts -->
+  <script>
+    function addToFavourites(title, img) {
+      const current = JSON.parse(localStorage.getItem("nextview_favourites")) || [];
+      const exists = current.find(f => f.title === title);
+      if (!exists) {
+        current.push({ title, img });
+        localStorage.setItem("nextview_favourites", JSON.stringify(current));
+        alert("Added to favourites!");
+      } else {
+        alert("Already in favourites.");
+      }
+    }
+  </script>
+  <a href="support-loggedin.html" class="support-bubble"> Need any help❓</a>
+  <script src="scripts/coursor.js"></script>
+  <script>
+  function toggleDropdown() {
+    document.getElementById('dropdown').classList.toggle('hidden');
+  }
+
+  function logout() {
+    localStorage.removeItem("nextview_user");
+    window.location.href = "index.html";
+  }
+</script>
+<script>
+  const user = localStorage.getItem("nextview_user");
+  if (!user) {
+    window.location.href = "index-loggedin.html";
+  }
+</script>
+
+<script>
+  function openMoviePageEmpty(title, img, description) {
+    const movieData = { title, img, description };
+    localStorage.setItem("nextview_selectedMovie", JSON.stringify(movieData));
+    window.location.href = "movie-open-empty.html";
+  }
+</script>
+<!-- Poisk -->
+<script>
+  document.getElementById('searchInput').addEventListener('input', function(e) {
+    if (e.target.value.length >= 1) {
+      
+      window.location.href = `search-loggedin.html?query=${encodeURIComponent(e.target.value)}`;
+    }
+  });
+</script>
+
+</body>
+</html>
