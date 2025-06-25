@@ -54,7 +54,15 @@ exports.loginUser = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.json({ token, message: 'Вхід успішний!' });
+    // Вот здесь добавлено поле user!
+    res.json({
+      token,
+      user: {
+        username: user.username,
+        email: user.email
+      },
+      message: 'Вхід успішний!'
+    });
   } catch (err) {
     console.error('Помилка входу:', err);
     res.status(500).json({ message: 'Внутрішня помилка сервера' });
