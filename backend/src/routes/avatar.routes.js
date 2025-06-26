@@ -28,7 +28,7 @@ const upload = multer({ storage });
 // Загрузка аватарки (POST /api/avatar)
 router.post('/avatar', upload.single('avatar'), async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = Number(req.body.userId);
     if (!userId) return res.status(400).json({ message: "Не передан userId" });
     if (!req.file) return res.status(400).json({ message: "Нет файла" });
 
