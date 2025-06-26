@@ -13,7 +13,6 @@
 <body>
   <div class="account-settings-container">
     <div class="account-header">
-      <!-- Профильная аватарка -->
       <img id="profile-avatar" class="avatar-preview" src="img/avatar.jpg" alt="User Avatar" />
       <div>
         <h2 id="username">Имя</h2>
@@ -21,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Форма для выбора/загрузки нового аватара -->
     <form id="avatar-form" enctype="multipart/form-data">
       <input type="file" name="avatar" id="avatar" accept="image/*" />
       <button type="submit" class="btn">Загрузить аватарку</button>
@@ -52,7 +50,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="custom-footer">
     <div class="footer-content">
       <div class="footer-text">
@@ -77,25 +74,38 @@
 
   <script src="scripts/coursor.js"></script>
   <script>
-    // Проверка авторизации и отображение данных пользователя
-    const user = JSON.parse(localStorage.getItem("nextview_user"));
-    if (!user) {
+    // --- Загрузка профиля и аватарки ---
+    let user;
+    try {
+      user = JSON.parse(localStorage.getItem("nextview_user"));
+    } catch (e) {
+      user = null;
+    }
+    if (!user || !user.id) {
+      alert('Вы не залогинены! Перенаправляем на главную.');
       window.location.href = "index.html";
     } else {
-      document.getElementById("username").textContent = user.username;
-      document.getElementById("email").textContent = user.email;
+      document.getElementById("username").textContent = user.username || "";
+      document.getElementById("email").textContent = user.email || "";
       document.getElementById("profile-avatar").src = user.avatar_url || "img/avatar.jpg";
     }
 
-    // Загрузка аватарки (отправка на backend)
+    // --- Загрузка аватарки ---
     document.getElementById("avatar-form").addEventListener("submit", async function (e) {
       e.preventDefault();
       const fileInput = document.getElementById("avatar");
       if (!fileInput.files.length) return alert("Выберите файл!");
 
+      // Явная проверка userId
+      if (!user || !user.id) {
+        alert("Ошибка: не найден userId (перелогиньтесь)!");
+        return;
+      }
+      const userId = user.id;
+
       const formData = new FormData();
       formData.append("avatar", fileInput.files[0]);
-      formData.append("userId", user.id); // Передаём ID
+      formData.append("userId", userId);
 
       try {
         const response = await fetch("/api/avatar", {
@@ -104,7 +114,7 @@
         });
         const data = await response.json();
 
-        if (data.avatarUrl) {
+        if (response.ok && data.avatarUrl) {
           user.avatar_url = data.avatarUrl;
           localStorage.setItem("nextview_user", JSON.stringify(user));
           document.getElementById("profile-avatar").src = user.avatar_url;
