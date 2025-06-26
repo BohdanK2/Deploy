@@ -84,7 +84,6 @@
     } else {
       document.getElementById("username").textContent = user.username;
       document.getElementById("email").textContent = user.email;
-      // Показываем аватарку: если нет — дефолт
       document.getElementById("profile-avatar").src = user.avatar_url || "img/avatar.jpg";
     }
 
@@ -96,22 +95,25 @@
 
       const formData = new FormData();
       formData.append("avatar", fileInput.files[0]);
-      formData.append("userId", user.id); // Если идентификатор нужен
+      formData.append("userId", user.id); // Передаём ID
 
-      // Пример запроса: замени на свой backend-роут!
-      const response = await fetch("/api/avatar", {
-        method: "POST",
-        body: formData
-      });
-      const data = await response.json();
+      try {
+        const response = await fetch("/api/avatar", {
+          method: "POST",
+          body: formData
+        });
+        const data = await response.json();
 
-      if (data.avatarUrl) {
-        user.avatar_url = data.avatarUrl;
-        localStorage.setItem("nextview_user", JSON.stringify(user));
-        document.getElementById("profile-avatar").src = user.avatar_url;
-        alert("Аватарка успешно обновлена!");
-      } else {
-        alert(data.message || "Ошибка при загрузке аватарки");
+        if (data.avatarUrl) {
+          user.avatar_url = data.avatarUrl;
+          localStorage.setItem("nextview_user", JSON.stringify(user));
+          document.getElementById("profile-avatar").src = user.avatar_url;
+          alert("Аватарка успешно обновлена!");
+        } else {
+          alert(data.message || "Ошибка при загрузке аватарки");
+        }
+      } catch (err) {
+        alert("Ошибка при загрузке аватарки");
       }
     });
 
